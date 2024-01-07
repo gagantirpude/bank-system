@@ -28,7 +28,12 @@ public class Query {
     public static String openAccount = "INSERT INTO accounts (account_number, name, email, balance, pin) VALUES (?, ?, ?, ?, ?)";
 
     public static String getAccountNumber = "SELECT account_number FROM accounts WHERE email = ? ORDER BY account_number DESC LIMIT 1";
-//    public static String checkAccountNumber = "SELECT * FROM accounts WHERE account_number = ? OR email = ?";
+//    public static String checkAccountNumber = "SELECT * FROM accounts WHERE account_number = ? OR email =
 
+
+    //todo: Get balance
+    public static String getBalance = "SELECT balance FROM accounts WHERE account_number = ? AND pin = ?";
+
+    public static String checkAccountNumber = "SELECT * FROM accounts WHERE account_number = ?";
 }
 

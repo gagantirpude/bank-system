@@ -23,6 +23,7 @@ public class User {
 
     public void registerUser() {
 
+        System.out.println("\n\nPlease Enter Your Details for Registration...");
         System.out.print("Enter your name: ");
         String name = scanner.nextLine();
 
@@ -38,7 +39,8 @@ public class User {
         //todo: checkUser method
         // if user already exists, print message and return from method. 
         if (checkUser(email)) {
-            System.out.println("User Already Exists for this Email Address...");
+            System.out.println("User Already Exists for this Email Address... \n \n");
+
         } else {
             try {
                 //todo: connect method from Database class
@@ -57,9 +59,9 @@ public class User {
 
                 //todo: if affectedRows > 0, print message
                 if (affectedRows > 0) {
-                    System.out.println("Registration Successfull!");
+                    System.out.println("Registration Successfully! \n \n");
                 } else {
-                    System.out.println("Registration Failed!");
+                    System.out.println("\n Registration Failed! \n");
                 }
             } catch (SQLException e) {
                 e.fillInStackTrace();
@@ -117,15 +119,12 @@ public class User {
 
     //todo: User Login method
     public String loginUser() {
+        System.out.println("\n\nEnter Your Details for Login...");
         System.out.print("Enter your email: ");
         String email = scanner.nextLine();
 
         System.out.print("Enter your password: ");
         String password = scanner.nextLine();
-
-        //todo: hashPassword method
-        String hashPassword =HashPassword.hashPassword(password);
-
 
         try {
             Connection connection = Database.connect();
@@ -139,18 +138,36 @@ public class User {
 
                         //todo: verifyPassword method
                         if (BCrypt.checkpw(password, storedHashedPassword)) {
-                            System.out.println("Login successful!");
+                            //todo: user login successfully
                             return email;
                         } else {
-                            System.out.println("Incorrect password!");
+                            System.out.println("Incorrect Email and Password!");
                         }
                     } else {
-                        System.out.println("User not found!");
+                        System.out.println("User not found! \n");
+
+                        System.out.println("Do You Want to Register ? \n");
+
+                        System.out.println("1. Yes ");
+                        System.out.println("2. No \n");
+
+                        System.out.print("Enter your choice : ");
+                        int choice = scanner.nextInt();
+                        scanner.nextLine();
+
+                        if (choice == 1) {
+                            System.out.println("Registering User... \n");
+                            //todo: If user not found, call the registerUser method
+                            registerUser();
+                                return null;
+                        }
+
+
                     }
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            e.fillInStackTrace();
         }
      return null;
     }

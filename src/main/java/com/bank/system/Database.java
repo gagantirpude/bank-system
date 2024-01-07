@@ -35,7 +35,7 @@ public class Database {
             ResultSet resultSet = statement.executeQuery(sql);
 
             if (resultSet.next()) {
-                System.out.println("Database '" + DB_NAME + "' exists.");
+                //System.out.println("Database '" + DB_NAME + "' exists.");
             } else {
                 System.out.println("Database '" + DB_NAME + "' does not exist.");
                 statement.executeUpdate(Query.createDB + " " + DB_NAME);
