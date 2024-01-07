@@ -19,9 +19,16 @@ public class Query {
 
 
     //todo: Account Table Queries
-    public static String createAccountTable = "CREATE TABLE IF NOT EXISTS accounts (  account_number bigint(10) NOT NULL PRIMARY KEY, name varchar(50) NOT NULL, email varchar(50) NOT NULL UNIQUE, balance decimal(10,2) NOT NULL, pin char(4) NOT NULL)";
+    public static String createAccountTable = "CREATE TABLE IF NOT EXISTS accounts (  account_number bigint(10) NOT NULL PRIMARY KEY, name varchar(50) NOT NULL, email varchar(50) NOT NULL UNIQUE, balance decimal(10,2) NOT NULL, pin varchar(100) NOT NULL)";
 
     public static String showAccountTable = "SHOW TABLES LIKE";
 
     public static String checkAccountEmail = "SELECT * FROM accounts WHERE email = ?";
+
+    public static String openAccount = "INSERT INTO accounts (account_number, name, email, balance, pin) VALUES (?, ?, ?, ?, ?)";
+
+    public static String getAccountNumber = "SELECT account_number FROM accounts WHERE email = ? ORDER BY account_number DESC LIMIT 1";
+//    public static String checkAccountNumber = "SELECT * FROM accounts WHERE account_number = ? OR email = ?";
+
 }
+
