@@ -70,7 +70,7 @@ public class Main {
                                     switch (choice2) {
                                         case 1:
                                             System.out.println("Debit Money");
-                                            //accountManager.debit_money(accountNumber);
+                                            accountManager.debit_money(accountNumber);
                                             break;
                                         case 2:
                                             System.out.println("Credit Money");

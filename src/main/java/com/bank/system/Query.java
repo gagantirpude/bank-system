@@ -35,5 +35,8 @@ public class Query {
     public static String getBalance = "SELECT balance FROM accounts WHERE account_number = ? AND pin = ?";
 
     public static String checkAccountNumber = "SELECT * FROM accounts WHERE account_number = ?";
+
+    public static String debitMoney = "UPDATE accounts SET balance = balance + ? WHERE account_number = ?";
+
 }
 
